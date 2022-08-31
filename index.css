@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.bodyDiv{
+    width: 100%;
+    height: 100vh;
+}
+
+.container{
+    background-color: rgb(255, 249, 162);
+    width: 100%;
+    height: 100%;
+}
