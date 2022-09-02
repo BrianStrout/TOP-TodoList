@@ -12,4 +12,44 @@
     background-color: rgb(255, 249, 162);
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noteBook{
+    background-color: antiquewhite;
+    width: 85%;
+    height: 85%;
+    padding: .5em;
+}
+
+.listItemTitle{
+    background-color: blueviolet;
+}
+.listItemTitle--active{
+    opacity: 75%;
+}
+
+
+.listItemTitle::after{
+    content: '\25be';
+    float: right;
+    /* transform: scale(1.5); */
+}
+.listItemTitle--active::after{
+    content: '\25b4';
+    float: right;
+    transform: scale(1.5);
+}
+
+.listItemContent{
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s;
+}
+
+.listItemContent--active{
+    max-height: max-content;
 }
