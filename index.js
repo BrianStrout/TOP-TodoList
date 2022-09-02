@@ -1,4 +1,6 @@
 window.onload = (e) => {
+    generateAtmosphere();
+    generateNoteBook();
 
 }
 
@@ -13,6 +15,7 @@ function generateAtmosphere(){
 }
 
 function generateNoteBook(){
+    let atmosphere = document.getElementById('atmosphere');
    let noteBook = document.createElement('div');
    noteBook.classList.add('noteBook');
    atmosphere.appendChild(noteBook); 
@@ -53,66 +56,114 @@ function addItemToList(newToDo){
 function publishToList(newItem){
     
     let noteBookList = document.getElementById('noteBookList');
-
     let listItemCard = document.createElement('div');
-
-    listItemCard.classList.add('listItemCard');
-    
-    noteBookList.appendChild(listItemCard);
-
+        listItemCard.classList.add('listItemCard');
+        listItemCard.setAttribute('draggable', true);
+        noteBookList.appendChild(listItemCard);
     let listItemTitle= document.createElement('div');
-    listItemTitle.classList.add('listItemTitle');
-    listItemTitle.classList.add('listItemItem');
-    listItemTitle.innerHTML = "<h4 style='display: inline; border-bottom: 1px solid red;'> Task: </h4>" + newItem.title;
-    listItemTitle.dataset.dewey=newItem.inputIndex;
-    listItemCard.appendChild(listItemTitle);
-
-    if (newItem.priority === "high"){ console.log("HIGH REIGSTERED!")}
-
+        listItemTitle.classList.add('listItemTitle');
+        listItemTitle.classList.add('listItemItem');
+        listItemTitle.innerHTML = "<h4 style='display: inline; border-bottom: 1px solid red;'> Task: </h4>" + newItem.title;
+        listItemTitle.dataset.dewey=newItem.inputIndex;
+        listItemCard.appendChild(listItemTitle);
+                    if (newItem.priority === "high"){ console.log("HIGH REIGSTERED!")}
     let listItemCardContent= document.createElement('div');
-    listItemCardContent.classList.add('listItemContent');
-    listItemCardContent.classList.add('listItemContent--active');
-    listItemCardContent.classList.add('listItemItem');
-    listItemCard.appendChild(listItemCardContent);
-
+        listItemCardContent.classList.add('listItemContent');
+        listItemCardContent.classList.add('listItemContent--active');
+        listItemCardContent.classList.add('listItemItem');
+        listItemCard.appendChild(listItemCardContent);
     let listItemDueDate = document.createElement('div');
-    listItemDueDate.classList.add('listItemDate');
-    listItemDueDate.classList.add('listItemItem');
-    listItemDueDate.innerHTML = "<h6 style='display: inline'> Due: </h4>" + newItem.date;
-    listItemCardContent.appendChild(listItemDueDate);
-
+        listItemDueDate.classList.add('listItemDate');
+        listItemDueDate.classList.add('listItemItem');
+        listItemDueDate.innerHTML = "<h6 style='display: inline'> Due: </h4>" + newItem.date;
+        listItemCardContent.appendChild(listItemDueDate);
     let listItemDescription = document.createElement('div');
-    listItemDescription.classList.add('listItemDescription');
-    listItemDescription.classList.add('listItemItem');
-    listItemDescription.innerHTML = "<h6 style='display: inline'> Description: </h4>" + newItem.description;
-    listItemCardContent.appendChild(listItemDescription);
-
+        listItemDescription.classList.add('listItemDescription');
+        listItemDescription.classList.add('listItemItem');
+        listItemDescription.innerHTML = "<h6 style='display: inline'> Description: </h4>" + newItem.description;
+        listItemCardContent.appendChild(listItemDescription);
     if (newItem.notes==="yes"){
     let listItemNotes = document.createElement('div');
-    listItemNotes.classList.add('listItemNotes');
-    listItemNotes.classList.add('listItemItem');
-    listItemNotes.innerHTML = "<h6 style='display: inline'> Notes: </h4><input placeholder='...'value=''>";
-    listItemCardContent.appendChild(listItemNotes);
+        listItemNotes.classList.add('listItemNotes');
+        listItemNotes.classList.add('listItemItem');
+        listItemNotes.innerHTML = "<h6 style='display: inline'> Notes: </h4><input placeholder='...'value=''>";
+        listItemCardContent.appendChild(listItemNotes);
     }
     if (newItem.checkList==="yes"){
-        let listItemCheckList = document.createElement('div');
+    let listItemCheckList = document.createElement('div');
         listItemCheckList.classList.add('listItemDescription');
         listItemCheckList.classList.add('listItemItem');
         listItemCheckList.innerHTML = "<ol><li></li></ol>";
         listItemCardContent.appendChild(listItemCheckList);
         }
-    
     let listIndex = projectList.length;
     let metaDiv = document.createElement('div');
-    metaDiv.classList.add('listItemItem');
-    metaDiv.classList.add('listMetaDiv');
+        metaDiv.classList.add('listItemItem');
+        metaDiv.classList.add('listMetaDiv');
         metaDiv.textContent=`index: ${listIndex}`;
         listItemCardContent.appendChild(metaDiv);
-
         listItemCardContent.setAttribute('id', `liccNum${newItem.inputIndex}`);
-        // console.log(listItemCardContent);
+
+     
+       
 
 }
+
+function makeDraggable(){
+
+
+let dragItem = null;
+// const cards = document.querySelector('.listItemCard')
+
+let cards = document.querySelectorAll('.listItemCard');
+        cards.forEach(item => {
+            item.addEventListener('dragstart', dragStart)
+            item.addEventListener('dragend', dragEnd)
+        });
+
+        if(projectList.length>1){
+            let column = document.getElementById('noteBookList');
+            new Sortable(column, {
+                group: "shared",
+                animation: 150,
+                ghostClass: "blue-background-class"
+            });
+            }
+
+}
+
+
+
+
+function dragStart() {
+    console.log('drag started');
+    dragItem = this;
+    // setTimeout(() => this.className = 'invisible', 0)
+}
+function dragEnd() {
+    console.log('drag ended');
+    this.className = 'item'
+    dragItem = null;
+}
+function dragOver(e) {
+    e.preventDefault()
+    console.log('drag over');
+}
+function dragEnter() {
+    console.log('drag entered');
+}
+function dragLeave() {
+    console.log('drag left');
+}
+function dragDrop() {
+    console.log('drag dropped');
+    // this.append(dragItem);
+}
+
+
+
+
+
 
 function updateIndexing(){
 
@@ -120,7 +171,6 @@ function updateIndexing(){
 
 
 function test(){
-    generateNoteBook();
     generateNewListItem("Task Number 1", "high", "November 1st", "Please do this already", "yes", "yes");
 }
 function test2(){
@@ -129,8 +179,6 @@ function test2(){
 
 
 document.addEventListener('click',function(e){
-
-
     if(e.target.classList[0]=== 'listItemTitle'){
         let target = e.target;
         let targetDewey=e.target.dataset.dewey;
