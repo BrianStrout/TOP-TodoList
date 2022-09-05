@@ -40,7 +40,28 @@ function generateNoteBook(){
 
 
 
+function prepStorage(){
+    //revisit after population
+}
+function fileStorage(sessionArray){
+//recieve preassemlbed array(?) of to dos
+            for(i=0; i<sessionArray.length; i++){
+                
+            }
 
+//package that into an object for local storage
+const session={
+
+}
+
+//put into local storage
+window.localStorage.setItem('user', JSON.stringify(person));
+
+
+}
+function retrieveStorage(){
+    //not sure yet
+}
 
 
 
@@ -107,34 +128,28 @@ function generateInputForNewItems(){
                     inputItemCardPriorityBut3L.innerHTML="<label for='lowPrio'>Low</label>"
                     radioDiv.appendChild(inputItemCardPriorityBut3L);
 
-
-
-
-
-
-
     let inputItemDueDate = document.createElement('div');
         inputItemDueDate.classList.add('inputItemDate');
         inputItemDueDate.classList.add('inputItemItem');
-        inputItemDueDate.innerHTML = "<h6 style='display: inline'> Due: </h4><input id='input2' type='text'></input>";
+        inputItemDueDate.innerHTML = "<h6 style='display: inline'> Due: </h4><input id='input3' type='text'></input>";
         inputItemCard.appendChild(inputItemDueDate);
 
     let inputItemDescription = document.createElement('div');
         inputItemDescription.classList.add('inputItemDescription');
         inputItemDescription.classList.add('inputItemItem');
-        inputItemDescription.innerHTML = "<h6 style='display: inline'> Description: </h4><input id='input3' type='text'></input>";
+        inputItemDescription.innerHTML = "<h6 style='display: inline'> Description: </h4><input id='input4' type='text'></input>";
         inputItemCard.appendChild(inputItemDescription);
 
     let inputItemNotesCheck = document.createElement('div');
         inputItemNotesCheck.classList.add('inputItemNotes');
         inputItemNotesCheck.classList.add('inputItemItem');
-        inputItemNotesCheck.innerHTML = "<h6 style='display: inline'>Want room for notes? </h4><input id='input4' type='checkbox'></input>";
+        inputItemNotesCheck.innerHTML = "<h6 style='display: inline'>Want room for notes? </h4><input id='input5' type='checkbox'></input>";
         inputItemCard.appendChild(inputItemNotesCheck);
 
     let inputItemCheckInput = document.createElement('div');
         inputItemCheckInput.classList.add('inputItemCheckList');
         inputItemCheckInput.classList.add('inputItemItem');
-        inputItemCheckInput.innerHTML = "<h6 style='display: inline'>Want a checklist? </h4><input id='input5' type='checkbox'></input>";
+        inputItemCheckInput.innerHTML = "<h6 style='display: inline'>Want a checklist? </h4><input id='input6' type='checkbox'></input>";
         inputItemCard.appendChild(inputItemCheckInput);
 
     let inputItemNotes = document.createElement('div');
@@ -142,7 +157,7 @@ function generateInputForNewItems(){
         inputItemNotes.classList.add('inputItemItem');
         inputItemNotes.classList.add('hidden');
         inputItemNotes.setAttribute('id', 'inputNoteField');
-        inputItemNotes.innerHTML = "<h6 style='display: inline'>Notes: </h4><input id='input6' type='text' id='notesUserInput'></input>";
+        inputItemNotes.innerHTML = "<h6 style='display: inline'>Notes: </h4><input id='input7' type='text' id='notesUserInput'></input>";
         inputItemCard.appendChild(inputItemNotes);
 
     let inputtingItemCheckInput = document.createElement('div');
@@ -180,12 +195,36 @@ let checkListArray = [];
 
 
 function gatherIntelFromForm(){
-
-    console.log('submit');
-
-
-}
-
+    let inputItemCard1 = document.getElementById('input1');
+    let inTitle = inputItemCard1.value;
+    
+    let inPriority = "lowPrio";
+                let inputItemHig = document.getElementById('highPrio');
+                let inputItemMed = document.getElementById('medPrio');
+                // let inputItemLow = document.getElementById('lowPrio');
+                if(inputItemHig.checked === true){ inPriority = "highPrio"}
+                else if(inputItemMed.checked === true){ inPriority = "medPrio"}
+    // let inPriority = inputItemCard2.value;
+    
+    
+    
+    let inputItemCard3 = document.getElementById('input3');
+    let inDueDate = inputItemCard3.value;
+    
+    let inputItemCard4 = document.getElementById('input4');
+    let inDescription = inputItemCard4.checked = false;
+    
+    let inputItemCard5 = document.getElementById('input5');
+    let inHasNotes = inputItemCard5.checked = false;
+    
+    let inputItemCard6 = document.getElementById('input6');
+    let inHasChecklist = inputItemCard5.checked = false;
+    
+    // let inputItemCard6 = document.querySelectorAll('.checkListItem').forEach(input => {input.value="";});
+    generateNewListItem(inputItemCard1, inPriority, inputItemCard3, inputItemCard4, inputItemCard5, inputItemCard6);
+    
+    }
+    
 
 function generateNewListItem(itemTitle, itemPriority, itemDueDate, itemDescription, itemHasNotes, itemHasChecklist){
     // console.log("new item");
@@ -350,7 +389,8 @@ document.addEventListener('click',function(e){
     if(e.target.id === 'newToDoSubmitButton'){
         let checkForTask= document.getElementById('input1');
         if (checkForTask.value.length>0){
-            gatherIntelFromForm()               
+            gatherIntelFromForm();
+
                 }
                 }
 
