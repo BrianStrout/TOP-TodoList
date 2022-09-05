@@ -212,16 +212,16 @@ function gatherIntelFromForm(){
     let inDueDate = inputItemCard3.value;
     
     let inputItemCard4 = document.getElementById('input4');
-    let inDescription = inputItemCard4.checked = false;
+    let inDescription = inputItemCard4.value;
     
     let inputItemCard5 = document.getElementById('input5');
-    let inHasNotes = inputItemCard5.checked = false;
+    let inHasNotes = inputItemCard5.checked;
     
     let inputItemCard6 = document.getElementById('input6');
-    let inHasChecklist = inputItemCard5.checked = false;
+    let inHasChecklist = inputItemCard6.checked;
     
     // let inputItemCard6 = document.querySelectorAll('.checkListItem').forEach(input => {input.value="";});
-    generateNewListItem(inputItemCard1, inPriority, inputItemCard3, inputItemCard4, inputItemCard5, inputItemCard6);
+    generateNewListItem(inTitle, inPriority, inDueDate, inDescription, inHasNotes, inHasChecklist);
     
     }
     
