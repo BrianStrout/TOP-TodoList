@@ -1,0 +1,134 @@
+:root {
+  --grain: #d7cec7;
+  --blackboard: #565656;
+  --oxblood: #76323f;
+  --tan: #c09f80;
+  --white: antiquewhite;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.bodyDiv {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  background-color: var(--tan);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.noteBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--grain);
+  width: 85%;
+  height: 85%;
+  padding: 0.5em;
+  padding-bottom: 0.75em;
+}
+.noteBookHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 100%;
+
+  width: 100%;
+  margin: 0.75em;
+}
+
+#mainHeader {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-decoration: underline;
+}
+.noteBookList {
+  width: 100%;
+}
+
+.noteBookHeader > button {
+  height: 2rem;
+  width: 5rem;
+}
+
+#inputFormCard {
+  position: absolute;
+  left: calc(50% - 30vw);
+
+  width: 60vw;
+  padding: 1.5vw;
+  border: 2px solid hotpink;
+  border-radius: 5px;
+
+  background-color: var(--oxblood);
+
+  transition: max-height 2.2s;
+}
+
+.inputPriorityDiv {
+  display: inline;
+}
+
+.listItemCard {
+  background-color: rgba(162, 7, 126, 0.185);
+}
+
+.listItemTitle {
+  background-color: var(--oxblood);
+  padding: 0.25em;
+}
+.listItemTitle--active {
+  opacity: 75%;
+}
+
+.listItemTitle::after {
+  content: "\25be";
+  float: right;
+  /* transform: scale(1.5); */
+}
+.listItemTitle--active::after {
+  content: "\25b4";
+  float: right;
+  transform: scale(1.5);
+}
+
+.listItemContent {
+  padding: 0em 0.5em;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s;
+}
+
+.listItemContent--active {
+  max-height: max-content;
+  padding: 0.25em 0.5em;
+}
+
+.pushedOffRight {
+  transform: translateX(100vw);
+}
+
+.hidden {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+  .noteBookHeader {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    margin: 0.75em;
+  }
+  #mainHeader {
+    font-size: 1.5rem;
+  }
+}
