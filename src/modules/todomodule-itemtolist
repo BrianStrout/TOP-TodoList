@@ -129,9 +129,19 @@ function publishToList(newItem) {
   listItemCardContent.appendChild(metaDiv);
   listItemCardContent.setAttribute("id", `liccNum${newItem.inputIndex}`);
 
+  let buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
+  listItemCardContent.appendChild(buttonContainer);
+
+  let updateButton = document.createElement("button");
+  updateButton.textContent = "update";
+  updateButton.setAttribute("id", `updateButton${newItem.inputIndex}`);
+  updateButton.classList.add("updateItemButton");
+  buttonContainer.appendChild(updateButton);
+
   let doneButton = document.createElement("button");
   doneButton.textContent = "done";
-  listItemCardContent.appendChild(doneButton);
+  buttonContainer.appendChild(doneButton);
 
   if (projectList.length > 1) {
     makeDraggable();

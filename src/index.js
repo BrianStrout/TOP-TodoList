@@ -133,10 +133,19 @@ document.addEventListener("click", function (e) {
   }
 
   if (e.target.id === "newToDoSubmitButton") {
+    let coordinator = document.querySelector("#inputFormCard");
     let checkForTask = document.getElementById("input1");
     if (checkForTask.value.length > 0) {
       gatherIntelFromForm();
     }
+    if (!coordinator.classList.contains("pushedOffRight")) {
+      coordinator.classList.add("pushedOffRight");
+    }
+  }
+
+  if (e.target.classList.contains("updateItemButton")) {
+    console.log("call to update item");
+    updateItem(e);
   }
 });
 
@@ -166,5 +175,9 @@ document.addEventListener("invalid", (e) => {
 window.makeDraggable = makeDraggable;
 window.dragStart = dragStart;
 window.dragEnd = dragEnd;
+
+const updateItem = (e) => {
+  console.log(e.target.parentElement);
+};
 
 export { projectList };
