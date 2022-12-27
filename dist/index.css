@@ -1,6 +1,6 @@
 :root {
   --grain: #d7cec7;
-  --blackboard: #565656;
+  --blackboard: #3a3939;
   --oxblood: #76323f;
   --tan: #c09f80;
   --white: antiquewhite;
@@ -67,9 +67,9 @@
   border: 2px solid hotpink;
   border-radius: 5px;
 
-  background-color: var(--oxblood);
+  background-color: var(--blackboard);
 
-  transition: max-height 2.2s;
+  transition: transform 0.3s ease-out, max-height 2.2s;
 }
 
 .inputPriorityDiv {
@@ -104,6 +104,18 @@
   max-height: 0px;
   overflow: hidden;
   transition: max-height 0.2s;
+  background-color: var(--blackboard);
+}
+
+.listItemDate,
+.listItemDescription,
+.listItemItem {
+  color: var(--white);
+  font-size: 2rem;
+}
+#input4 {
+  width: 80%;
+  height: 4rem;
 }
 
 .listItemContent--active {
@@ -119,7 +131,12 @@
   max-height: 0px;
   overflow: hidden;
 }
-
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
 @media only screen and (max-width: 500px) {
   .noteBookHeader {
     display: grid;

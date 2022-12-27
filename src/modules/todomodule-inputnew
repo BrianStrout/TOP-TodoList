@@ -3,25 +3,25 @@ function generateInputForNewItems() {
 
   let inputItemCard = document.createElement("div");
   inputItemCard.classList.add("inputItemCard");
-  inputItemCard.classList.add("listItemItem");
+  inputItemCard.classList.add("inputItemItem");
   inputItemCard.setAttribute("id", "inputFormCard");
   noteBookList.appendChild(inputItemCard);
 
   let inputItemCardTitle = document.createElement("div");
   inputItemCardTitle.classList.add("inputItemCardTitle");
-  inputItemCardTitle.classList.add("listItemItem");
+  inputItemCardTitle.classList.add("inputItemItem");
   inputItemCardTitle.innerHTML =
     "<h4 style='display: inline;'> Task: </h4><input id='input1' type='text' required pattern='[A-Za-z]+'></input>";
   inputItemCard.appendChild(inputItemCardTitle);
 
   let inputItemCardPriority = document.createElement("div");
   inputItemCardTitle.classList.add("inputItemCardPriority");
-  inputItemCardTitle.classList.add("listItemItem");
+  inputItemCardTitle.classList.add("inputItemItem");
   inputItemCard.appendChild(inputItemCardTitle);
 
   let radioDiv = document.createElement("div");
   radioDiv.classList.add("inputPriorityDiv");
-  radioDiv.classList.add("listItemItem");
+  radioDiv.classList.add("inputItemItem");
   inputItemCard.appendChild(radioDiv);
 
   let inputItemCardPriorityLeg = document.createElement("label");
@@ -63,7 +63,7 @@ function generateInputForNewItems() {
   inputItemDueDate.classList.add("inputItemDate");
   inputItemDueDate.classList.add("inputItemItem");
   inputItemDueDate.innerHTML =
-    "<h6 style='display: inline'> Due: </h4><input id='input3' type='text'></input>";
+    "<h6 style='display: inline'> Due: </h4><input id='input3' type='date'></input>";
   inputItemCard.appendChild(inputItemDueDate);
 
   let inputItemDescription = document.createElement("div");
